@@ -30,6 +30,7 @@ struct sVector
     int (*pfVectorFree)(vector *);
 };
 
+void vector_init(vector *);
 static int vectorResize(vector *v, int capacity);
 int vectorPushBack(vector *v, void *item, int (*pfVectorResize)(vector *, int));
 int vectorSet(vector *v, int index, void *item);
