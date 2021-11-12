@@ -16,7 +16,7 @@ void vector_init(vector *v)
     v->vectorList.items = malloc(sizeof(void *) * v->vectorList.capacity);
 }
 
-int vectorResize(vector *v, int capacity)
+static int vectorResize(vector *v, int capacity)
 {
     int status = UNDEFINED;
     if (v)
