@@ -53,6 +53,7 @@ int vectorPushBack(vector *v, void *item, int (*pfVectorResize)(vector *, int))
         }
         return status;
     }
+    return status;
 }
 
 int vectorSet(vector *v, int index, void *item)
