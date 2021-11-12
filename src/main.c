@@ -7,9 +7,9 @@ int main(int argc, char *argv[])
     //init vector
     VECTOR_INIT(v);
     //Add data in vector
-    v.pfVectorAdd(&v,"aticleworld.com\n");
-    v.pfVectorAdd(&v,"amlendra\n");
-    v.pfVectorAdd(&v,"Pooja\n");
+    v.pfVectorAdd(&v,"aticleworld.com\n", v.pfVectorResize);
+    v.pfVectorAdd(&v,"amlendra\n", v.pfVectorResize);
+    v.pfVectorAdd(&v,"Pooja\n", v.pfVectorResize);
     //print the data and type cast it
     for (i = 0; i < v.pfVectorTotal(&v); i++)
     {

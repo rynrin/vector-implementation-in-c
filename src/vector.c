@@ -32,7 +32,7 @@ static int vectorResize(vector *v, int capacity)
     return status;
 }
 
-int vectorPushBack(vector *v, void *item)
+int vectorPushBack(vector *v, void *item, int (*pfVectorResize)(vector *, int))
 {
     int status = UNDEFINED;
     if (v)
@@ -40,7 +40,7 @@ int vectorPushBack(vector *v, void *item)
         sVectorList vl = v->vectorList;
         if (vl.capacity == vl.total)
         {
-            status = vectorResize(v, vl.capacity * 2);
+            status = pfVectorResize(v, vl.capacity * 2);
             if(status != UNDEFINED)
             {
                 vl.items[vl.total++] = item;
@@ -82,7 +82,7 @@ void *vectorGet(vector *v, int index)
     return readData;
 }
 
-int vectorDelete(vector *v, int index)
+int vectorDelete(vector *v, int index, int (*pfVectorResize)(vector *, int))
 {
     int  status = UNDEFINED;
     int i = 0;
@@ -99,7 +99,7 @@ int vectorDelete(vector *v, int index)
         v->vectorList.total--;
         if ((v->vectorList.total > 0) && ((v->vectorList.total) == (v->vectorList.capacity / 4)))
         {
-            vectorResize(v, v->vectorList.capacity / 2);
+            pfVectorResize(v, v->vectorList.capacity / 2);
         }
         status = SUCCESS;
     }
